@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Group from './Group'
+import Home from './Home'
 
 export default function AllMovies({ data }) {
   const [organizedMovies, setOrganizedMovies] = useState([])
@@ -6,23 +8,42 @@ export default function AllMovies({ data }) {
   //function allows for alphabetical order:
   const propComparator = (propName) =>
   (a, b) => a[propName].toLowerCase() == b[propName].toLowerCase() ? 0 : a[propName].toLowerCase() < b[propName].toLowerCase() ? -1 : 1
+
   
   useEffect(() => {
-    // console.log(data)
-    data.sort(propComparator(`title`)).map((data) => setOrganizedMovies(data), console.log(data))
+  
+    data.sort(propComparator(`title`))
+
+    let grouped = data.reduce((r, e) => {
+      // get first letter of name of current element
+      let group = e.title[0];
+      // if there is no property in accumulator with this letter create it
+      if(!r[group]) r[group] = {group, children: [e]}
+      // if there is push current element to children array for that letter
+      else r[group].children.push(e);
+      // return accumulator
+      return r;
+    }, {})
+
+    let result = Object.values(grouped)
+    setOrganizedMovies(result)
+    console.log(result)
+
+
   }, [data])
+
  
   return (
     <div>
-      <h1>All Movies</h1>
-      <div className='movie-name-container'>
-        {organizedMovies.map((data) => (
-          <div>
-            <button>{data.title}</button>
-          </div>
-        ))}
-
+      <h2>All Movies</h2>
+      <div className='btn-container'>
+      {organizedMovies.map((movie) => (
+        <div className='category-btn'>
+          <button onClick={()=>{console.log(movie.children)}}>{movie.group}</button>
+        </div> 
+      ))}
       </div>
+     
     </div>
   )
 }
