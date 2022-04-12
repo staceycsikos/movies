@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+
 
 export default function Group({showList, setShowList, data}) {
-  console.log(data.title)
+
   return <div>{showList ?
-    <div>
-      <ul>{data.map((movie) => {
-        return (<il>
+    <div> 
+      <ul>
+        {data.map((movie) => {
+        return (<li>
         {movie.title}
-        </il>)
-      })}</ul>
+        </li>)
+        })}
+      </ul>
     </div> : null}</div>
   
 }

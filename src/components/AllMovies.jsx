@@ -34,10 +34,9 @@ export default function AllMovies({ data }) {
 
   }, [data])
 
-  const listAppear = (x) => {
+  const listAppear = (children) => {
     setShowList(prev => !prev)
-    setMovies(x)
-        
+    setMovies(children)
   }
   
   
@@ -49,16 +48,17 @@ export default function AllMovies({ data }) {
       <div className='btn-container'>
       {organizedMovies.map((movie) => (
         <div className='category-btn'>
-          <button onClick={() => { listAppear(movie.children) }}>{movie.group}</button>
-          <Group
-            showList={showList}
-            data={movies}
-            setShowList= {setShowList} />
+          <button onClick={() => {
+            listAppear(movie.children)
+          }}>{movie.group}</button>
         </div> 
       ))}
+      <Group
+        showList={showList}
+        data={movies}
+        setShowList= {setShowList} />
       </div>
      
     </div>
   )
 }
-{/* <button onClick={()=>{console.log(movie.children)}}>{movie.group}</button> */}
