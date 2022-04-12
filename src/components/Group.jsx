@@ -1,8 +1,16 @@
-import React from 'react'
+import {useState} from 'react'
 
-export default function Group({showList, setShowList, data}) {
-  console.log(data)
-  return
+export default function Group({props}) {
+  const [current, setCurrent] = useState(false)
+  const currentFlag = () => setCurrent(prevState => !prevState)
+ 
+  return (
+    <li>
+      <p>{props.group}</p>
+      <br />
+      <p>{props.children}</p>
+    </li>
+  )
   // (
     // <div>
     //   {showList ? (

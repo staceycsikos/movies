@@ -28,14 +28,14 @@ export default function AllMovies({ data }) {
 
     let result = Object.values(grouped)
     setOrganizedMovies(result)
-    console.log(result)
+    // console.log(result)
 
 
   }, [data])
 
-  const listAppear = () => {
-    setShowList(prev => !prev)
-  }
+  // const handleClick = (event) => {
+  //   return event.children
+  // }
   
   
 
@@ -43,19 +43,34 @@ export default function AllMovies({ data }) {
   return (
     <div>
       <h2>All Movies</h2>
-      <div className='btn-container'>
-      {organizedMovies.map((movie) => (
-        <div className='category-btn'>
-          <button onClick={listAppear}>{movie.group}</button>
-          <Group
-            showList={showList}
-            data={movie.children}
-            setShowList= {setShowList} />
-        </div> 
-      ))}
-      </div>
-     
+      <ul>
+        {organizedMovies.map((movie) => {
+          console.log(movie)
+          return (<li><Group
+            data={ movie } /></li>)
+        })}
+      </ul>
     </div>
   )
 }
-{/* <button onClick={()=>{console.log(movie.children)}}>{movie.group}</button> */}
+{/* <button onClick={()=>{console.log(movie.children)}}>{movie.group}</button> */ }
+
+// return (
+//   <div>
+//     <h2>All Movies</h2>
+//     <div className='btn-container'>
+//     {organizedMovies.map((movie) => (
+//       <div className='category-btn'>
+//         <button onClick={listAppear}>{movie.group}</button>
+//         <Group
+//           showList={showList}
+//           data={movie.children}
+//           setShowList={setShowList}
+//           {...movie}
+//         />
+//       </div> 
+//     ))}
+//     </div>
+   
+//   </div>
+// )
