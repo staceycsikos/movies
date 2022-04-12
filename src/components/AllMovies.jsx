@@ -4,7 +4,6 @@ import Home from './Home'
 
 export default function AllMovies({ data }) {
   const [organizedMovies, setOrganizedMovies] = useState([])
-  const [showList, setShowList] = useState(false)
   
   //function allows for alphabetical order:
   const propComparator = (propName) =>
@@ -33,16 +32,20 @@ export default function AllMovies({ data }) {
 
   }, [data])
 
+<<<<<<< HEAD
   // const handleClick = (event) => {
   //   return event.children
   // }
   
   
 
+=======
+>>>>>>> parent of 21af2a0 (MIGHT HAVE TO REVERT BACK TO THIS)
  
   return (
     <div>
       <h2>All Movies</h2>
+<<<<<<< HEAD
       <ul>
         {organizedMovies.map((movie) => {
           console.log(movie)
@@ -74,3 +77,16 @@ export default function AllMovies({ data }) {
    
 //   </div>
 // )
+=======
+      <div className='btn-container'>
+      {organizedMovies.map((movie) => (
+        <div className='category-btn'>
+          <button onClick={()=>{console.log(movie.children)}}>{movie.group}</button>
+        </div> 
+      ))}
+      </div>
+     
+    </div>
+  )
+}
+>>>>>>> parent of 21af2a0 (MIGHT HAVE TO REVERT BACK TO THIS)

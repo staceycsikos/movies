@@ -1,5 +1,6 @@
 import {useState} from 'react'
 
+<<<<<<< HEAD
 export default function Group({props}) {
   const [current, setCurrent] = useState(false)
   const currentFlag = () => setCurrent(prevState => !prevState)
@@ -21,7 +22,23 @@ export default function Group({props}) {
     //         </ul>
     //       </div>
     //     ))) : null}
+=======
+export default function Group({data}) {
+  console.log(data)
+  return (
+    <div>
+      {/* {data.map((movie) => {(
+        <div>
+          <ul>
+            <li>{movie.title}</li>
+          </ul>
+>>>>>>> parent of 21af2a0 (MIGHT HAVE TO REVERT BACK TO THIS)
 
-    // </div>
-  // )
+        </div>
+        
+      )})} */}
+      <p>hi</p>
+
+    </div>
+  )
 }
