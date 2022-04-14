@@ -22,7 +22,7 @@ export default function Group({showList, data}) {
           )  
         })}
       </ul>
-      <Movie modal={modal} setModal={setModal} />
+      <Movie show={modal} />
     </div> : null}</div>
   
 }
