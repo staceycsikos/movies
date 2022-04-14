@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Group from './Group'
-import Home from './Home'
+import "./global.css"
+import { Route, Routes } from 'react-router-dom'
+import Movie from './Movie'
 
 export default function AllMovies({ data }) {
   const [organizedMovies, setOrganizedMovies] = useState([])
@@ -16,14 +18,11 @@ export default function AllMovies({ data }) {
   
     data.sort(propComparator(`title`))
 
+    //sets group base on first character of letter 
     let grouped = data.reduce((r, e) => {
-      // get first letter of name of current element
       let group = e.title[0];
-      // if there is no property in accumulator with this letter create it
       if(!r[group]) r[group] = {group, children: [e]}
-      // if there is push current element to children array for that letter
       else r[group].children.push(e);
-      // return accumulator
       return r;
     }, {})
 
@@ -35,24 +34,24 @@ export default function AllMovies({ data }) {
   }, [data])
 
   const listAppear = (children) => {
-    setShowList(prev => !prev)
+    setShowList(!showList)
     setMovies(children)
   }
   
-  
 
- 
   return (
     <div>
-      <h2>All Movies</h2>
-      <div className='btn-container'>
-      {organizedMovies.map((movie) => (
-        <div className='category-btn'>
-          <button onClick={() => {
-            listAppear(movie.children)
-          }}>{movie.group}</button>
-        </div> 
-      ))}
+      <div className='top'>
+        <h2>All Movies</h2>
+        <div className='btn-container'>
+        {organizedMovies.map((movie) => (
+          <div className='category-btn'>
+            <button onClick={() => {
+              listAppear(movie.children)
+            }}>{movie.group}</button>
+          </div> 
+        ))}
+      </div>
       <Group
         showList={showList}
         data={movies}

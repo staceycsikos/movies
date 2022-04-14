@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import AllMovies from "./components/AllMovies";
+import Movie from "./components/Movie";
 
 function App() {
   const [data, setData] = useState([]);
@@ -17,7 +18,6 @@ function App() {
       }
     );
     setData(response.data);
-    // console.log(response.data);
   };
 
   useEffect(() => {
@@ -30,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/all-movies" element={<AllMovies data={data} />} />
+        <Route path="/all-movies/:movie_id" element={<Movie />} />
       </Routes>
     </div>
   );
