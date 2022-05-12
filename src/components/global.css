@@ -50,3 +50,25 @@ li{
   height: 300px; /* Full height */
   background-color: white; /* Fallback color */
 }
+
+.home {
+  background-color: white;
+}
+
+.description {
+  background-color: white;
+  width: 75vw;
+  margin-left: 12.5vw;
+}
+.movie-details{
+  display: flex;
+}
+
+button{
+  font-weight: bold;
+}
+
+.title {
+  font-size: 50px;
+  border-bottom: #555 solid 3px;
+}

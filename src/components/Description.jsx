@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function Description(showModal, setShowModal, description) {
-  console.log(description)
+export default function Description(showModal, setShowModal, overview) {
+  console.log(overview)
   return (
   <div>
-    {showModal ? <div>description{description}</div> : null}
+    {showModal ? <div>description: {overview}</div> : null}
   </div>
   )
 }
