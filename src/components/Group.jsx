@@ -10,7 +10,6 @@ export default function Group({showList, data}) {
   return <div>{showList ?
     <div> 
       <ul className="list-container">
-      <button onClick={() => Toggle()}>test</button>
         {data.map((movie) => {
           return (
            
