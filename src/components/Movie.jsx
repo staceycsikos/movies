@@ -32,7 +32,6 @@ export default function Movie({show}) {
         (<div className='movies-details'>
           <h1>{movieDetails.title}</h1>
           <h3 className='description'>{movieDetails.overview}</h3>
-          {/* <h3>Genre(s):{movieDetails.genres}</h3> */}
           <img src={movieDetails.poster_path} alt={movieDetails.title} width="350px" height="500px"/>
           <h3>Release Date:{movieDetails.release_date}</h3>
         </div>

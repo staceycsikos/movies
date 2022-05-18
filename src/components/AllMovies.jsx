@@ -3,6 +3,7 @@ import Group from './Group'
 import "./global.css"
 import { Route, Routes } from 'react-router-dom'
 import Movie from './Movie'
+import Home from './Home'
 
 export default function AllMovies({ data }) {
   const [organizedMovies, setOrganizedMovies] = useState([])
@@ -11,7 +12,7 @@ export default function AllMovies({ data }) {
   
   //function allows for alphabetical order:
   const propComparator = (propName) =>
-  (a, b) => a[propName].toLowerCase() == b[propName].toLowerCase() ? 0 : a[propName].toLowerCase() < b[propName].toLowerCase() ? -1 : 1
+  (a, b) => a[propName].toLowerCase() === b[propName].toLowerCase() ? 0 : a[propName].toLowerCase() < b[propName].toLowerCase() ? -1 : 1
 
   
   useEffect(() => {
@@ -34,7 +35,11 @@ export default function AllMovies({ data }) {
   }, [data])
 
   const listAppear = (children) => {
-    setShowList(!showList)
+    if (!showList) {
+      setShowList(!showList)
+    } else {
+      setShowList(showList)
+    }
     setMovies(children)
   }
   
@@ -42,6 +47,7 @@ export default function AllMovies({ data }) {
   return (
     <div>
       <div className='top'>
+        <Home />
         <h2>All Movies</h2>
         <div className='btn-container'>
         {organizedMovies.map((movie) => (
@@ -52,7 +58,7 @@ export default function AllMovies({ data }) {
           </div> 
         ))}
       </div>
-      <Group
+        <Group
         showList={showList}
         data={movies}
         setShowList= {setShowList} />
